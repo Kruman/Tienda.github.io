@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head><script src="../assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.111.3">
+    <title>GPU</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+
+    
+
+    
+
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+    </style>
+
+    
+</style>
+<script></script>
+<script type="text/javascript">
+function meterencarro(formu) {
+unidades=formu.numpedido.value;
+descripcion=formu.producto.value;
+if (confirm("Se a añadido el productoa la compra.\n\n " + descripcion)) {
+numeroregistro = 0;  
+numeroregistro = getcookie("numerodeorden");
+numeroregistro++;
+if ( numeroregistro > 5 )
+     alert("ATENCIÓN\nSu carrito esta lleno.\nPor favor, acceda a la hoja de pedido.\nGracias.");
+else {
+actualizarbase = formu.numpedido.value + "|"  + formu.precio.value  + "|" + formu.referencia.value + "|" + formu.producto.value;
+nuevopedido = "Order." + numeroregistro;
+setcookie (nuevopedido, actualizarbase, null, "/");
+setcookie ("numerodeorden", numeroregistro, null, "/");
+
+aviso = "PRODUCTO SELECCIONADO\n\n" + "Cantidad: " + unidades + " unidad/es.\n"
++ "Producto: \n" + descripcion + ".\n\nPulse sobre el Carro para acceder\na su lista de compra.\nGracias";
+alert(aviso);
+}
+}
+}
+
+function getcookieval (offset) {
+  var endstr = document.cookie.indexOf (";", offset);
+  if (endstr == -1)
+  endstr = document.cookie.length;
+  return unescape(document.cookie.substring(offset, endstr));
+}
+
+function getcookie (name) {
+   var arg = name + "=";
+   var alen = arg.length;
+   var clen = document.cookie.length;
+   var i = 0;
+   while (i < clen)
+        {
+        var j = i + alen;
+        if (document.cookie.substring(i, j) == arg) return getcookieval (j);
+        i = document.cookie.indexOf(" ", i) + 1;
+        if (i == 0) break;
+        }
+   return null;
+}
+
+function setcookie (name,value,expires,path,domain,secure) {
+   document.cookie = name + "=" + escape (value) +
+      ((expires) ? "; expires=" + expires.toGMTString() : "") +
+      ((path) ? "; path=" + path : "") +
+      ((domain) ? "; domain=" + domain : "") +
+      ((secure) ? "; secure" : "");
+}
+</script>
+
+
+
+
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+      </symbol>
+    </svg>
+
+   
+
+    
+<header data-bs-theme="dark">
+  <div class="collapse text-bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4>PC-Era</h4>
+          <p class="text-body-secondary">Bienvenidos a nuestra página web, donde ofrecemos una amplia variedad de productos originales de empresas reconocidas en México, con la respectiva garantía de cada fabricante. Nos comprometemos a proporcionar a nuestros clientes una experiencia de compra confiable y de alta calidad, donde todos los productos que ofrecemos son auténticos y solo se pueden adquirir en México.</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4>Contactanos</h4>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white">Twitter</a></li>
+            <li><a href="#" class="text-white">Facebook</a></li>
+            <li><a href="#" class="text-white">Email</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a href="index.html" class="navbar-brand d-flex align-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
+        <strong>Graficas</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Tarjetas Graficas</h1>
+        <p class="lead text-body-secondary">Gracias por visitar nuestra página web y confiar en nosotros como su proveedor en línea de productos originales en México.</p>
+        <p>
+          <a href="sing.html" class="btn btn-primary my-2">Mi cuenta</a>
+          <a href="index.html" class="btn btn-secondary my-2">Principal</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-body-tertiary">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+    <title>Gigabyte RX 6600</title>
+    <image href="img/gpu1.jpg" width="100%" height="100%" />
+</svg>
+            <div class="card-body">
+              <p class="card-text">Gigabyte RX 6600 Eagle 8G GDDR6 128-bit Windforce 3X GV-R66EAGLE-8GD</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <form  action="" name="order" id="order">
+         <input onclick="meterencarro(this.form)" type="button" id="boton" value="Añadir" class="btn btn-sm btn-outline-secondary"/>
+<input maxlength="2" id="inputs" size="2" value="1" name="numpedido" class="btn btn-sm btn-outline-secondary"/>
+<a href="pedido.html" type="button" class="btn btn-sm btn-outline-secondary" value="Carrito"></a>
+<input type="hidden" value="2168.00" name="precio" />
+<input type="hidden" value="CPU AMD 5" name="producto" /> 
+<input type="hidden" value="ID101" name="referencia" />
+</form>
+                </div>
+                <small class="text-body-secondary">$4,604.00</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+    <title>GeForce RTX 3060</title>
+    <image href="img/gpu2.jpg" width="100%" height="100%" />
+</svg>
+            <div class="card-body">
+              <p class="card-text">Gigabyte Tarjeta gráfica GeForce RTX 3060 Gaming OC 12G (REV2.0), 3 Ventiladores</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                 <form  action="" name="order" id="order">
+         <input onclick="meterencarro(this.form)" type="button" id="boton" value="Añadir" class="btn btn-sm btn-outline-secondary"/>
+<input maxlength="2" id="inputs" size="2" value="1" name="numpedido" class="btn btn-sm btn-outline-secondary"/>
+<a href="pedido.html" type="button" class="btn btn-sm btn-outline-secondary" value="Carrito"></a>
+<input type="hidden" value="2168.00" name="precio" />
+<input type="hidden" value="CPU AMD 5" name="producto" /> 
+<input type="hidden" value="ID101" name="referencia" />
+</form>
+                </div>
+                <small class="text-body-secondary">$7,836.00</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+    <title>GeForce RTX 4070 12GB</title>
+    <image href="img/gpu3.jpg" width="100%" height="100%" />
+</svg>
+            <div class="card-body">
+              <p class="card-text">MSI Gaming GeForce RTX 4070 12GB GDRR6X 192-Bit HDMI/DP Nvlink TORX Fan 4.0 Ada Lovelace Architecture Tarjeta gráfica.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+              <form  action="" name="order" id="order">
+         <input onclick="meterencarro(this.form)" type="button" id="boton" value="Añadir" class="btn btn-sm btn-outline-secondary"/>
+<input maxlength="2" id="inputs" size="2" value="1" name="numpedido" class="btn btn-sm btn-outline-secondary"/>
+<a href="pedido.html" type="button" class="btn btn-sm btn-outline-secondary" value="Carrito"></a>
+<input type="hidden" value="2168.00" name="precio" />
+<input type="hidden" value="CPU AMD 5" name="producto" /> 
+<input type="hidden" value="ID101" name="referencia" />
+</form>
+                </div>
+                <small class="text-body-secondary">$12,687.00</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm">
+           <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+    <title>RTX™ 4070 Gaming X</title>
+    <image href="img/gpu5.jpg" width="100%" height="100%" />
+</svg>
+            <div class="card-body">
+              <p class="card-text">MSI Gaming GeForce RTX™ 4070 Gaming X Trio 12GB NVIDIA, Tri FROZR 3, TORX Fan 5.0, con DLSS 3, con DLSS 3.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+<form  action="" name="order" id="order">
+         <input onclick="meterencarro(this.form)" type="button" id="boton" value="Añadir" class="btn btn-sm btn-outline-secondary"/>
+<input maxlength="2" id="inputs" size="2" value="1" name="numpedido" class="btn btn-sm btn-outline-secondary"/>
+<a href="pedido.html" type="button" class="btn btn-sm btn-outline-secondary" value="Carrito"></a>
+<input type="hidden" value="2168.00" name="precio" />
+<input type="hidden" value="CPU AMD 5" name="producto" /> 
+<input type="hidden" value="ID101" name="referencia" />
+</form>
+                </div>
+                <small class="text-body-secondary">$13,747.00</small>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+           <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+    <title>NVIDIA GeForce RTX™ 4070 Ti</title>
+    <image href="img/gpu4.jpg" width="100%" height="100%" />
+</svg>
+            <div class="card-body">
+              <p class="card-text">Asus TUF Gaming NVIDIA GeForce RTX™ 4070 Ti OC Edition Tarjeta gráfica para Juegos </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+             <form  action="" name="order" id="order">
+         <input onclick="meterencarro(this.form)" type="button" id="boton" value="Añadir" class="btn btn-sm btn-outline-secondary"/>
+<input maxlength="2" id="inputs" size="2" value="1" name="numpedido" class="btn btn-sm btn-outline-secondary"/>
+<a href="pedido.html" type="button" class="btn btn-sm btn-outline-secondary" value="Carrito"></a>
+<input type="hidden" value="2168.00" name="precio" />
+<input type="hidden" value="CPU AMD 5" name="producto" /> 
+<input type="hidden" value="ID101" name="referencia" />
+</form>
+                </div>
+                <small class="text-body-secondary">$17,964.00</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+    <title>MAXSUN Geforce RTX 4070 Ti</title>
+    <image href="img/gpu6.jpg" width="100%" height="100%" />
+</svg>
+            <div class="card-body">
+              <p class="card-text">MAXSUN Geforce RTX 4070 Ti iCraft Edición Limitada OC 12GB GDDR6X Tarjeta Gráfica GPU para Computadora Gaming PC HDMI2.1 PCIE 4.0 X16.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+          <form  action="" name="order" id="order">
+         <input onclick="meterencarro(this.form)" type="button" id="boton" value="Añadir" class="btn btn-sm btn-outline-secondary"/>
+<input maxlength="2" id="inputs" size="2" value="1" name="numpedido" class="btn btn-sm btn-outline-secondary"/>
+<a href="pedido.html" type="button" class="btn btn-sm btn-outline-secondary" value="Carrito"></a>
+<input type="hidden" value="2168.00" name="precio" />
+<input type="hidden" value="CPU AMD 5" name="producto" /> 
+<input type="hidden" value="ID101" name="referencia" />
+</form>
+                </div>
+                <small class="text-body-secondary">$22,440.00</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-body-secondary py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Back to top</a>
+    </p>
+    <p class="mb-1">Album example is &copy; Además, nuestro equipo de atención al cliente está a su disposición para responder cualquier pregunta que puedan tener. </p>
+    <p class="mb-0">Nos enorgullece brindar un servicio excepcional y una experiencia de compra sin problemas para nuestros clientes. <a href="">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
+  </div>
+</footer>
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      
+  </body>
+</html>
